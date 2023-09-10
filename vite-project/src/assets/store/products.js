@@ -1,6 +1,3 @@
-// store/products.js
-
-// store/products.js
 
 const initialState = [
   {
@@ -39,13 +36,10 @@ const initialState = [
     inventoryCount: 12,
     imgPath: 'https://i.pinimg.com/originals/8f/da/6f/8fda6f3e00f8bde7b752cfef6ba42e3c.jpg', // Game 2 image
   },
-  // Add more products as needed
 ];
 
-// Rest of the code...
 
 
-// Reducer
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     default:

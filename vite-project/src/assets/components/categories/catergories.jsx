@@ -1,4 +1,3 @@
-// Categories.jsx
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveCategory } from '../../store/actions/categories';
 import './catergories.scss'; 

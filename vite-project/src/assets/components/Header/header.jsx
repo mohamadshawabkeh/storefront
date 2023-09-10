@@ -21,14 +21,13 @@ const navItems = [{ text: 'CART', count: 0 }];
 function Header(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [cartCount, setCartCount] = React.useState(0); // Initialize cart count to 0
+  const [cartCount, setCartCount] = React.useState(0);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
   const handleAddToCart = () => {
-    // Simulate adding an item to the cart
     setCartCount(cartCount + 1);
   };
 
@@ -37,8 +36,8 @@ function Header(props) {
       onClick={handleDrawerToggle}
       sx={{
         textAlign: 'center',
-        backgroundColor: '#333', // Change background color to #333
-        color: '#fff', // Change text color to white
+        backgroundColor: '#333', 
+        color: '#fff', 
       }}
     >
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -97,15 +96,15 @@ function Header(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
-              backgroundColor: '#333', // Change background color to #333
-              color: '#fff', // Change text color to white
+              backgroundColor: '#333', 
+              color: '#fff', // 
             },
           }}
         >

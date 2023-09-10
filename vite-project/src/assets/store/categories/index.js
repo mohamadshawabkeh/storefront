@@ -1,4 +1,3 @@
-// store/categories/index.js
 
 const initialState = {
   categories: [
@@ -7,18 +6,18 @@ const initialState = {
       name: 'Electronics',
       displayName: 'Electronics',
       description: 'Description for Electronics',
-      productIds: [1, 2], // IDs of products associated with Electronics
+      productIds: [1, 2],
     },
     {
       id: 2,
       name: 'Games',
       displayName: 'Games',
       description: 'Description for Games',
-      productIds: [], // IDs of products associated with Games (add as needed)
+      productIds: [], 
     },
-    // Add more categories as needed
+
   ],
-  activeCategory: null, // Initially, no active category
+  activeCategory: null,
 };
 
 const categoriesReducer = (state = initialState, action) => {
@@ -28,7 +27,6 @@ const categoriesReducer = (state = initialState, action) => {
         ...state,
         activeCategory: action.payload.name,
       };
-    // Handle other actions related to categories here
     default:
       return state;
   }
