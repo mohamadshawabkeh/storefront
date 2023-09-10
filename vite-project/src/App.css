@@ -1,0 +1,15 @@
+/* App.css (or your global CSS file) */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container covers the entire viewport height */
+}
+
+.content {
+  flex-grow: 1; /* Allow content to grow and push the footer down */
+}

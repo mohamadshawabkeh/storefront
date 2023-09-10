@@ -1,0 +1,37 @@
+.categories {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+  
+  .categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .categories li {
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s, background-color 0.3s;
+    color: #007bff;
+  
+    &:hover {
+      color: #007bff;
+      background-color: #f5f5f5;
+    }
+  }
+  
+  .categories li:last-child {
+    margin-right: 0;
+  }
+  
+  .categories li::after {
+    content: '|';
+    margin-left: 10px;
+    color: #ccc;
+  }
+  
