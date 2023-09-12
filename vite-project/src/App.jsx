@@ -10,8 +10,8 @@ import './App.css';
 function App() {
   return (
     <div className="app-container">
-      <Header />
       <Provider store={store}>
+      <Header />
         <div className="content">
           <Categories />
           <Products />

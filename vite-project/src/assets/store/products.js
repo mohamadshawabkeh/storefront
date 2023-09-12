@@ -1,3 +1,5 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-undef */
 
 const initialState = [
   {
@@ -38,10 +40,46 @@ const initialState = [
   },
 ];
 
+const DECREASE_INVENTORY = 'DECREASE_INVENTORY';
+const INCREASE_INVENTORY = 'INCREASE_INVENTORY'; 
 
+export const decreaseInventory = (productId) => ({
+  type: DECREASE_INVENTORY,
+  payload: productId,
+});
+
+export const increaseInventory = (productId) => ({
+  type: INCREASE_INVENTORY,
+  payload: productId,
+});
 
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case DECREASE_INVENTORY:
+
+    const productToUpdate = state.find((product) => product.id === action.payload);
+
+      if (productToUpdate && productToUpdate.inventoryCount > 0) {
+        return state.map((product) =>
+          product.id === action.payload
+            ? { ...product, inventoryCount: product.inventoryCount - 1 }
+            : product
+        );
+      }
+      return state; 
+
+    case INCREASE_INVENTORY:
+      const productToIncrease = state.find((product) => product.id === action.payload);
+
+      if (productToIncrease) {
+        return state.map((product) =>
+          product.id === action.payload
+            ? { ...product, inventoryCount: product.inventoryCount + 1 } // Increase inventory by 1
+            : product
+        );
+      }
+      return state; 
+
     default:
       return state;
   }
