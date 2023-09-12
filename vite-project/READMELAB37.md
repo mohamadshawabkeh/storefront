@@ -21,7 +21,6 @@ This is an online store application built with React and Redux, featuring catego
 
 - State includes an array of products in the cart.
 - An action adds a selected item to the cart.
-- When the item is empty from the store it removes the item from the products!
 
 ## Application Architecture
 
@@ -37,7 +36,6 @@ This is an online store application built with React and Redux, featuring catego
 - As a user, I can choose from products and add them to my shopping cart.
 - As a user, I can see the products in my cart in a list on the side of the page.
 - As a user, I can change the quantity of items in my cart.
-- As a user, I can remove items from my shopping cart.
 
 ## Application Flow
 
@@ -45,8 +43,7 @@ This is an online store application built with React and Redux, featuring catego
 2. Chooses a category and sees a list of products.
 3. Clicks "Add to Cart" on any product.
 4. Sees a list of all products in the <SimpleCart /> side menu.
-5. Clicks the delete button on an item to remove it.
-6. The cart total in the header updates.
+5. The cart total in the header updates.
 
 ## How to Run
 
@@ -55,6 +52,4 @@ This is an online store application built with React and Redux, featuring catego
 
 ## Pictures as testing
 ![lab37](./lab37.jpg)
-![lab37](./lab371.jpg)
 ![lab37](./lab372.jpg)
-
