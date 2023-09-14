@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './products.scss'; // Keep the SCSS import
+import './products.scss';
 import { addToCart } from '../../store/cart';
-import { decreaseInventory } from '../../store/products';
+import { fetchProducts } from '../../store/actions/products'; // Import the fetchProducts action
 
 const Products = () => {
   const activeCategory = useSelector((state) => state.categories.activeCategory);
@@ -19,25 +18,29 @@ const Products = () => {
   
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
-    dispatch(decreaseInventory(product.id));
   };
+
+  // Use the useEffect hook to fetch products when the component mounts
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <div className="products-container">
       <h1>{activeCategory}</h1>
       <h3>{dummyText}</h3>
 
-      <div className="products"> {/* Keep the "products" class */}
+      <div className="products">
         {products.map((product) => (
-          <div className="product-card" key={product.id}> {/* Keep the "product-card" class */}
+          <div className="product-card" key={product.id}>
             <img src={product.imgPath} alt={product.name} />
             <h3>{product.name}</h3>
             <p>Description: {product.description}</p>
             <p>Price: ${product.price}</p>
             <p>Inventory: {product.inventoryCount}</p>
-            <div className="buttons"> {/* Keep the "buttons" class */}
+            <div className="buttons">
               <button
-                className="add-to-cart" // Keep the "add-to-cart" class
+                className="add-to-cart"
                 onClick={() => handleAddToCart(product)}
               >
                 Add to Cart

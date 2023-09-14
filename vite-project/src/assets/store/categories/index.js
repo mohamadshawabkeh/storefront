@@ -6,14 +6,12 @@ const initialState = {
       name: 'Electronics',
       displayName: 'Electronics',
       description: 'Description for Electronics',
-      productIds: [1, 2],
     },
     {
       id: 2,
       name: 'Games',
       displayName: 'Games',
       description: 'Description for Games',
-      productIds: [], 
     },
 
   ],
