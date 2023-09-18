@@ -1,33 +1,30 @@
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  categories: [
-    {
-      id: 1,
-      name: 'Electronics',
-      displayName: 'Electronics',
-      description: 'Description for Electronics',
+const categoriesSlice = createSlice({
+  name: 'categories',
+  initialState: {
+    categories: [
+      {
+        id: 1,
+        name: 'Electronics',
+        displayName: 'Electronics',
+        description: 'Description for Electronics',
+      },
+      {
+        id: 2,
+        name: 'Games',
+        displayName: 'Games',
+        description: 'Description for Games',
+      },
+    ],
+    activeCategory: null, 
+  },
+  reducers: {
+    setActiveCategory: (state, action) => {
+      state.activeCategory = action.payload.name; 
     },
-    {
-      id: 2,
-      name: 'Games',
-      displayName: 'Games',
-      description: 'Description for Games',
-    },
+  },
+});
 
-  ],
-  activeCategory: null,
-};
-
-const categoriesReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'SET_ACTIVE_CATEGORY':
-      return {
-        ...state,
-        activeCategory: action.payload.name,
-      };
-    default:
-      return state;
-  }
-};
-
-export default categoriesReducer;
+export const { setActiveCategory } = categoriesSlice.actions;
+export default categoriesSlice.reducer;

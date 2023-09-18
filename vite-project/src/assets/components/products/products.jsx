@@ -1,37 +1,24 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import './products.scss';
+import  { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchProducts } from '../../store/products';
 import { addToCart } from '../../store/cart';
-import { fetchProducts } from '../../store/actions/products'; // Import the fetchProducts action
+import { Link } from 'react-router-dom';
+import './products.scss';
 
-const Products = () => {
-  const activeCategory = useSelector((state) => state.categories.activeCategory);
-  const dummyText = useSelector((state) => state.categories.dummyText);
-
-  const products = useSelector((state) =>
-    state.products
-      .filter((product) => product.category === activeCategory)
-      .filter((product) => product.inventoryCount > 0)
-  );
-
-  const dispatch = useDispatch();
-  
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
-
-  // Use the useEffect hook to fetch products when the component mounts
+const Products = ({ activeCategory, products, addToCart, fetchProducts }) => {
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    fetchProducts();
+  }, [fetchProducts]);
+
+  const filteredProducts = products.filter(
+    (product) => product.category === activeCategory
+  );
 
   return (
     <div className="products-container">
       <h1>{activeCategory}</h1>
-      <h3>{dummyText}</h3>
-
       <div className="products">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div className="product-card" key={product.id}>
             <img src={product.imgPath} alt={product.name} />
             <h3>{product.name}</h3>
@@ -39,13 +26,13 @@ const Products = () => {
             <p>Price: ${product.price}</p>
             <p>Inventory: {product.inventoryCount}</p>
             <div className="buttons">
-              <button
-                className="add-to-cart"
-                onClick={() => handleAddToCart(product)}
-              >
+              <button className="add-to-cart" onClick={() => addToCart(product)}>
                 Add to Cart
               </button>
-              <button className="view-details">View Details</button>
+              {/* Use Link to route to ProductDetails */}
+              <Link to={`/products/${product.id}`} className="view-details">
+                View Details
+              </Link>
             </div>
           </div>
         ))}
@@ -53,5 +40,14 @@ const Products = () => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  activeCategory: state.categories.activeCategory,
+  products: state.products,
+});
 
-export default Products;
+const mapDispatchToProps = {
+  addToCart,
+  fetchProducts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
